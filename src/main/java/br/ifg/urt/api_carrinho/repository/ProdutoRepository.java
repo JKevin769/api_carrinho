@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import br.ifg.urt.api_carrinho.model.Produto;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -41,10 +40,10 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
     @Query(value = "SELECT * FROM produtos WHERE estoque = 0", nativeQuery = true)
     List<Produto> buscarSemEstoque();
 
-    //Busca um estudante por ID ou lança uma exceção customizada.
-   default Produto findByIdOrThrow(Long id) {
+   // Busca um estudante por ID ou lança uma exceção customizada.
+    default Produto findByIdOrThrow(Long id) {
         return findById(id)
-               .orElseThrow(() -> new ProdutoNotFoundException(“
-                      Produto não encontrado com o ID: " + id));
+                .orElseThrow(() -> new ProdutoNotFoundException(
+                        "Produto não encontrado com o ID: " + id));
     }
 }
