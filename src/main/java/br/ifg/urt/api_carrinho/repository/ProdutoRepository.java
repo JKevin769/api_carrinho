@@ -42,9 +42,9 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
     List<Produto> buscarSemEstoque();
 
     //Busca um estudante por ID ou lança uma exceção customizada.
-//    default Produto findByIdOrThrow(Long id) {
-//        return findById(id)
-//                .orElseThrow(() -> new ProdutoNotFoundException(“
-//                        Produto não encontrado com o ID: " + id));
-//    }
+   default Produto findByIdOrThrow(Long id) {
+        return findById(id)
+               .orElseThrow(() -> new ProdutoNotFoundException(“
+                      Produto não encontrado com o ID: " + id));
+    }
 }
